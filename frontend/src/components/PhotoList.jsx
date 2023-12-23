@@ -58,9 +58,9 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = () => {
-  const photos = sampleDataForPhotoList.map((photo, index) => {
+  const photos = sampleDataForPhotoList.map((photo) => {
     return (
-      <li key={index}>
+      <li key={photo.id}>
         <PhotoListItem
           location={photo.location}
           imageSource={photo.urls.regular}

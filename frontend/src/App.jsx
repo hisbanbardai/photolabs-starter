@@ -24,8 +24,8 @@ const photos = new Array(
 const App = () => {
   return (
     <div className="App">
-      {photos.map((photo) => (
-        <PhotoListItem key={photo.id} {...photo} />
+      {photos.map((photo, index) => (
+        <PhotoListItem key={index} {...photo} />
       ))}
     </div>
   );

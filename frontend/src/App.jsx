@@ -8,13 +8,13 @@ const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function handleClick() {
-    setIsModalOpen(true);
+    setIsModalOpen((prevIsModalOpen) => (prevIsModalOpen ? false : true));
   }
 
   return (
     <div className="App">
       <HomeRoute openModal={handleClick} />
-      {isModalOpen && <PhotoDetailsModal />}
+      {isModalOpen && <PhotoDetailsModal closeModal={handleClick} />}
     </div>
   );
 };

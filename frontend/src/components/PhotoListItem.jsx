@@ -29,7 +29,7 @@ const PhotoListItem = ({
       /> */}
       <PhotoFavButton storeFavourites={storeFavourites} photoData={photoData} />
       <img
-        src={imageSource}
+        src={imageSource.regular}
         className="photo-list__image"
         onClick={() => {
           openModal();

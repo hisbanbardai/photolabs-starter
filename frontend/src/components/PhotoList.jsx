@@ -10,7 +10,7 @@ const PhotoList = ({ storeFavourites, openModal, selectPhoto }) => {
       <li key={photo.id}>
         <PhotoListItem
           location={photo.location}
-          imageSource={photo.urls.regular}
+          imageSource={photo.urls}
           username={photo.user.name}
           profile={photo.user.profile}
           storeFavourites={storeFavourites}

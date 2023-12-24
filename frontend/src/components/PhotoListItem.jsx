@@ -12,6 +12,8 @@ const PhotoListItem = ({
   storeFavourites,
   openModal,
   selectPhoto,
+  clickFavBtn,
+  isFavSelected,
 }) => {
   const photoData = {
     location,
@@ -27,7 +29,12 @@ const PhotoListItem = ({
           storeFavourites({ location, imageSource, username, profile })
         }
       /> */}
-      <PhotoFavButton storeFavourites={storeFavourites} photoData={photoData} />
+      <PhotoFavButton
+        storeFavourites={storeFavourites}
+        photoData={photoData}
+        clickFavBtn={clickFavBtn}
+        isFavSelected={isFavSelected}
+      />
       <img
         src={imageSource.regular}
         className="photo-list__image"

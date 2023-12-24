@@ -4,7 +4,7 @@ import "../styles/HomeRoute.scss";
 import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
-const HomeRoute = ({ openModal, selectPhoto }) => {
+const HomeRoute = ({ openModal, selectPhoto, clickFavBtn, isFavSelected }) => {
   const [favourites, addFavourites] = useState([]);
 
   function storeFavourites(photo) {
@@ -34,6 +34,8 @@ const HomeRoute = ({ openModal, selectPhoto }) => {
         storeFavourites={storeFavourites}
         openModal={openModal}
         selectPhoto={selectPhoto}
+        clickFavBtn={clickFavBtn}
+        isFavSelected={isFavSelected}
       />
     </div>
   );

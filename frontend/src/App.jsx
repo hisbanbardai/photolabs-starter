@@ -7,21 +7,33 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState();
+  const [isFavSelected, setIsFavSelected] = useState(false);
+
+  function handleClickFavBtn() {
+    // setIsSelected(isSelected ? false : true);
+    setIsFavSelected((prevIsFavSelected) => (prevIsFavSelected ? false : true));
+    storeFavourites(photoData);
+  }
 
   function selectPhoto(photo) {
     setSelectedPhoto(photo);
   }
 
-  function handleClick() {
+  function handleClickPhoto() {
     setIsModalOpen((prevIsModalOpen) => (prevIsModalOpen ? false : true));
   }
 
   return (
     <div className="App">
-      <HomeRoute openModal={handleClick} selectPhoto={selectPhoto} />
+      <HomeRoute
+        openModal={handleClickPhoto}
+        selectPhoto={selectPhoto}
+        clickFavBtn={handleClickFavBtn}
+        isFavSelected={isFavSelected}
+      />
       {isModalOpen && (
         <PhotoDetailsModal
-          closeModal={handleClick}
+          closeModal={handleClickPhoto}
           selectedPhoto={selectedPhoto}
         />
       )}

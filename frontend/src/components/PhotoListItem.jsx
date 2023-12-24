@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const PhotoListItem = ({
   location,
@@ -9,6 +10,7 @@ const PhotoListItem = ({
   username,
   profile,
   storeFavourites,
+  openModal,
 }) => {
   const photoData = {
     location,
@@ -25,7 +27,11 @@ const PhotoListItem = ({
         }
       /> */}
       <PhotoFavButton storeFavourites={storeFavourites} photoData={photoData} />
-      <img src={imageSource} className="photo-list__image" />
+      <img
+        src={imageSource}
+        className="photo-list__image"
+        onClick={openModal}
+      />
       <div className="photo-list__user-details">
         <img src={profile} className="photo-list__user-profile" />
         <div>

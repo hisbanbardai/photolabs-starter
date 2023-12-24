@@ -11,6 +11,7 @@ const PhotoListItem = ({
   profile,
   storeFavourites,
   openModal,
+  selectPhoto,
 }) => {
   const photoData = {
     location,
@@ -30,7 +31,10 @@ const PhotoListItem = ({
       <img
         src={imageSource}
         className="photo-list__image"
-        onClick={openModal}
+        onClick={() => {
+          openModal();
+          selectPhoto(photoData);
+        }}
       />
       <div className="photo-list__user-details">
         <img src={profile} className="photo-list__user-profile" />

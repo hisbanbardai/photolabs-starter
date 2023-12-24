@@ -4,13 +4,7 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 import photos from "mocks/photos";
 
-const PhotoList = ({
-  storeFavourites,
-  openModal,
-  selectPhoto,
-  clickFavBtn,
-  isFavSelected,
-}) => {
+const PhotoList = ({ storeFavourites, openModal, selectPhoto }) => {
   const renderPhotos = photos.map((photo) => {
     return (
       <li key={photo.id}>
@@ -22,8 +16,6 @@ const PhotoList = ({
           storeFavourites={storeFavourites}
           openModal={openModal}
           selectPhoto={selectPhoto}
-          clickFavBtn={clickFavBtn}
-          isFavSelected={isFavSelected}
         />
       </li>
     );

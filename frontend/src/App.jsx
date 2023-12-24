@@ -7,12 +7,10 @@ import PhotoDetailsModal from "routes/PhotoDetailsModal";
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState();
-  const [isFavSelected, setIsFavSelected] = useState(false);
+  const [favourites, addFavourites] = useState([]);
 
-  function handleClickFavBtn() {
-    // setIsSelected(isSelected ? false : true);
-    setIsFavSelected((prevIsFavSelected) => (prevIsFavSelected ? false : true));
-    storeFavourites(photoData);
+  function storeFavourites(photo) {
+    addFavourites((prevFavourites) => [...prevFavourites, photo]);
   }
 
   function selectPhoto(photo) {
@@ -28,13 +26,14 @@ const App = () => {
       <HomeRoute
         openModal={handleClickPhoto}
         selectPhoto={selectPhoto}
-        clickFavBtn={handleClickFavBtn}
-        isFavSelected={isFavSelected}
+        favourites={favourites}
+        storeFavourites={storeFavourites}
       />
       {isModalOpen && (
         <PhotoDetailsModal
           closeModal={handleClickPhoto}
           selectedPhoto={selectedPhoto}
+          storeFavourites={storeFavourites}
         />
       )}
     </div>

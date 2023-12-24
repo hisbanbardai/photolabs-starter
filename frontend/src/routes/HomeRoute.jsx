@@ -4,13 +4,7 @@ import "../styles/HomeRoute.scss";
 import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
-const HomeRoute = ({ openModal, selectPhoto, clickFavBtn, isFavSelected }) => {
-  const [favourites, addFavourites] = useState([]);
-
-  function storeFavourites(photo) {
-    addFavourites((prevFavourites) => [...prevFavourites, photo]);
-  }
-
+const HomeRoute = ({ openModal, selectPhoto, favourites, storeFavourites }) => {
   // function storeFavourites(photo) {
   //   console.log("Before", favourites);
   //   addFavourites((prevFavourites) => {
@@ -34,8 +28,6 @@ const HomeRoute = ({ openModal, selectPhoto, clickFavBtn, isFavSelected }) => {
         storeFavourites={storeFavourites}
         openModal={openModal}
         selectPhoto={selectPhoto}
-        clickFavBtn={clickFavBtn}
-        isFavSelected={isFavSelected}
       />
     </div>
   );

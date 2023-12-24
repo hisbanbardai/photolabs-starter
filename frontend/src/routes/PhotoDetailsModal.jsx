@@ -5,7 +5,7 @@ import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
 import PhotoFavButton from "components/PhotoFavButton";
 
-const PhotoDetailsModal = ({ closeModal, selectedPhoto }) => {
+const PhotoDetailsModal = ({ closeModal, selectedPhoto, storeFavourites }) => {
   return (
     <div className="photo-details-modal">
       <div className="photo-details-modal__top-bar">
@@ -20,7 +20,10 @@ const PhotoDetailsModal = ({ closeModal, selectedPhoto }) => {
       {console.log(selectedPhoto)}
 
       <div className="photo-details-modal__header">
-        <PhotoFavButton />
+        <PhotoFavButton
+          storeFavourites={storeFavourites}
+          photoData={selectedPhoto}
+        />
         <img
           src={selectedPhoto.imageSource.full}
           alt=""

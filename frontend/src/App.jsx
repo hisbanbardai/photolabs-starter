@@ -2,37 +2,43 @@ import React, { useState } from "react";
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
+import useApplicationData from "./hooks/useApplicationData";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState();
-  const [favourites, addFavourites] = useState([]);
+  const { state, handleClickPhoto, selectPhoto, storeFavourites } =
+    useApplicationData();
 
-  function storeFavourites(photo) {
-    addFavourites((prevFavourites) => [...prevFavourites, photo]);
-  }
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedPhoto, setSelectedPhoto] = useState();
+  // const [favourites, addFavourites] = useState([]);
 
-  function selectPhoto(photo) {
-    setSelectedPhoto(photo);
-  }
+  // function storeFavourites(photo) {
+  //   addFavourites((prevFavourites) => [...prevFavourites, photo]);
+  // }
 
-  function handleClickPhoto() {
-    setIsModalOpen((prevIsModalOpen) => (prevIsModalOpen ? false : true));
-  }
+  // function selectPhoto(photo) {
+  //   setSelectedPhoto(photo);
+  // }
+
+  // function handleClickPhoto() {
+  //   setIsModalOpen((prevIsModalOpen) => (prevIsModalOpen ? false : true));
+  // }
 
   return (
     <div className="App">
       <HomeRoute
+        state={state}
         openModal={handleClickPhoto}
         selectPhoto={selectPhoto}
-        favourites={favourites}
+        // favourites={favourites}
         storeFavourites={storeFavourites}
       />
-      {isModalOpen && (
+      {state.isModalOpen && (
         <PhotoDetailsModal
+          state={state}
           closeModal={handleClickPhoto}
-          selectedPhoto={selectedPhoto}
+          // selectedPhoto={selectedPhoto}
           storeFavourites={storeFavourites}
         />
       )}

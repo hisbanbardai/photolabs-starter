@@ -5,7 +5,7 @@ import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
 import PhotoFavButton from "components/PhotoFavButton";
 
-const PhotoDetailsModal = ({ closeModal, selectedPhoto, storeFavourites }) => {
+const PhotoDetailsModal = ({ state, closeModal, storeFavourites }) => {
   return (
     <div className="photo-details-modal">
       <div className="photo-details-modal__top-bar">
@@ -17,31 +17,32 @@ const PhotoDetailsModal = ({ closeModal, selectedPhoto, storeFavourites }) => {
         </button>
       </div>
 
-      {console.log(selectedPhoto)}
+      {console.log(state.selectedPhoto)}
 
       <div className="photo-details-modal__header">
         <PhotoFavButton
           storeFavourites={storeFavourites}
-          photoData={selectedPhoto}
+          photoData={state.selectedPhoto}
         />
         <img
-          src={selectedPhoto.imageSource.full}
+          src={state.selectedPhoto.imageSource.full}
           alt=""
           className="photo-details-modal__image"
         />
         <div className="photo-details-modal__photographer-details">
           <img
             className="photo-details-modal__photographer-profile"
-            src={selectedPhoto.profile}
+            src={state.selectedPhoto.profile}
             alt=""
           />
           <div>
             <span className="photo-details-modal__photographer-info">
-              {selectedPhoto.username}
+              {state.selectedPhoto.username}
             </span>
             <div>
               <span className="photo-details-modal__photographer-location photo-details-modal__photographer-info">
-                {selectedPhoto.location.city}, {selectedPhoto.location.country}
+                {state.selectedPhoto.location.city},{" "}
+                {state.selectedPhoto.location.country}
               </span>
             </div>
           </div>

@@ -4,6 +4,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({
+  id,
   location,
   imageSource,
   username,
@@ -13,6 +14,7 @@ const PhotoListItem = ({
   selectPhoto,
 }) => {
   const photoData = {
+    id,
     location,
     imageSource,
     username,
@@ -31,7 +33,7 @@ const PhotoListItem = ({
         src={imageSource.regular}
         className="photo-list__image"
         onClick={() => {
-          openModal();
+          openModal(true);
           selectPhoto(photoData);
         }}
       />

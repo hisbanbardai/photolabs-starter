@@ -18,8 +18,8 @@ const HomeRoute = ({ state, openModal, selectPhoto, storeFavourites }) => {
   //   });
   // }
 
-  console.log(state.favourites);
-  console.log(state.favourites.length);
+  // console.log(state.favourites);
+  // console.log(state.favourites.length);
 
   return (
     <div className="home-route">

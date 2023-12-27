@@ -11,7 +11,7 @@ const PhotoDetailsModal = ({ state, closeModal, storeFavourites }) => {
       <div className="photo-details-modal__top-bar">
         <button
           className="photo-details-modal__close-button"
-          onClick={closeModal}
+          onClick={() => closeModal(false)}
         >
           <img src={closeSymbol} alt="close symbol" />
         </button>

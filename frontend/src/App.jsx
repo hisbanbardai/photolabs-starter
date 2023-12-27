@@ -6,7 +6,7 @@ import useApplicationData from "./hooks/useApplicationData";
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const { state, handleClickPhoto, selectPhoto, storeFavourites } =
+  const { state, handleModal, selectPhoto, storeFavourites } =
     useApplicationData();
 
   // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,11 +25,12 @@ const App = () => {
   //   setIsModalOpen((prevIsModalOpen) => (prevIsModalOpen ? false : true));
   // }
 
+  // console.log(state.isModalOpen);
   return (
     <div className="App">
       <HomeRoute
         state={state}
-        openModal={handleClickPhoto}
+        openModal={handleModal}
         selectPhoto={selectPhoto}
         // favourites={favourites}
         storeFavourites={storeFavourites}
@@ -37,7 +38,7 @@ const App = () => {
       {state.isModalOpen && (
         <PhotoDetailsModal
           state={state}
-          closeModal={handleClickPhoto}
+          closeModal={handleModal}
           // selectedPhoto={selectedPhoto}
           storeFavourites={storeFavourites}
         />

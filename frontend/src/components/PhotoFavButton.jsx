@@ -7,9 +7,8 @@ function PhotoFavButton({ storeFavourites, photoData }) {
   const [isSelected, setIsSelected] = useState(false);
 
   function handleClick() {
-    // setIsSelected(isSelected ? false : true);
+    storeFavourites(photoData, isSelected);
     setIsSelected((prevIsSelected) => (prevIsSelected ? false : true));
-    storeFavourites(photoData);
   }
 
   return (

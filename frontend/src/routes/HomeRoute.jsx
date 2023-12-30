@@ -25,6 +25,7 @@ const HomeRoute = ({ state, openModal, selectPhoto, storeFavourites }) => {
     <div className="home-route">
       <TopNavigation favouritesCount={state.favourites.length} />
       <PhotoList
+        photoData={state.photoData}
         storeFavourites={storeFavourites}
         openModal={openModal}
         selectPhoto={selectPhoto}

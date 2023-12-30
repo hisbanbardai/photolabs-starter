@@ -2,10 +2,9 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
 
-const PhotoList = ({ storeFavourites, openModal, selectPhoto }) => {
-  const renderPhotos = photos.map((photo) => {
+const PhotoList = ({ photoData, storeFavourites, openModal, selectPhoto }) => {
+  const renderPhotos = photoData.map((photo) => {
     return (
       <li key={photo.id}>
         <PhotoListItem

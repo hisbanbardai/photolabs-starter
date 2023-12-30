@@ -6,6 +6,7 @@ export const ACTIONS = {
   SELECT_PHOTO: "SELECT_PHOTO",
   OPEN_MODAL: "OPEN_MODAL",
   CLOSE_MODAL: "CLOSE_MODAL",
+  SET_PHOTO_DATA: "SET_PHOTO_DATA",
 };
 
 function reducer(state, action) {
@@ -23,6 +24,8 @@ function reducer(state, action) {
       return { ...state, isModalOpen: false };
     case "OPEN_MODAL":
       return { ...state, isModalOpen: true };
+    case "SET_PHOTO_DATA":
+      return { ...state, photoData: action.payload };
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -43,7 +46,11 @@ function useApplicationData() {
 
   useEffect(() => {
     fetch("/api/photos").then((res) =>
-      res.json().then((data) => console.log(data))
+      res
+        .json()
+        .then((data) =>
+          dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+        )
     );
   }, []);
 

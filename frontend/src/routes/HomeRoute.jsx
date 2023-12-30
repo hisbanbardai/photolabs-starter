@@ -23,7 +23,7 @@ const HomeRoute = ({ state, openModal, selectPhoto, storeFavourites }) => {
 
   return (
     <div className="home-route">
-      <TopNavigation favouritesCount={state.favourites.length} />
+      <TopNavigation state={state} favouritesCount={state.favourites.length} />
       <PhotoList
         photoData={state.photoData}
         storeFavourites={storeFavourites}

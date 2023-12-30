@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer, useState, useEffect } from "react";
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
@@ -35,9 +35,17 @@ function useApplicationData() {
     isModalOpen: false,
     selectedPhoto: null,
     favourites: [],
+    photoData: [],
+    topicData: [],
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    fetch("/api/photos").then((res) =>
+      res.json().then((data) => console.log(data))
+    );
+  }, []);
 
   // const [isModalOpen, setIsModalOpen] = useState(false);
   // const [selectedPhoto, setSelectedPhoto] = useState();

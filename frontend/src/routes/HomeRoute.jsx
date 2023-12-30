@@ -4,7 +4,13 @@ import "../styles/HomeRoute.scss";
 import TopNavigation from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
-const HomeRoute = ({ state, openModal, selectPhoto, storeFavourites }) => {
+const HomeRoute = ({
+  state,
+  openModal,
+  selectPhoto,
+  selectTopic,
+  storeFavourites,
+}) => {
   // function storeFavourites(photo) {
   //   console.log("Before", favourites);
   //   addFavourites((prevFavourites) => {
@@ -23,7 +29,11 @@ const HomeRoute = ({ state, openModal, selectPhoto, storeFavourites }) => {
 
   return (
     <div className="home-route">
-      <TopNavigation state={state} favouritesCount={state.favourites.length} />
+      <TopNavigation
+        state={state}
+        selectTopic={selectTopic}
+        favouritesCount={state.favourites.length}
+      />
       <PhotoList
         photoData={state.photoData}
         storeFavourites={storeFavourites}

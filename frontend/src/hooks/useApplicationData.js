@@ -4,13 +4,16 @@ export const ACTIONS = {
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
   FAV_PHOTO_REMOVED: "FAV_PHOTO_REMOVED",
   SELECT_PHOTO: "SELECT_PHOTO",
+  SELECT_TOPIC: "SELECT_TOPIC",
   OPEN_MODAL: "OPEN_MODAL",
   CLOSE_MODAL: "CLOSE_MODAL",
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
 };
 
 function reducer(state, action) {
+  // Logic to handle state transition based on action type
   switch (action.type) {
     case "FAV_PHOTO_ADDED":
       return { ...state, favourites: [...state.favourites, action.payload] };
@@ -21,6 +24,8 @@ function reducer(state, action) {
       return { ...state, favourites: updatedFavourites };
     case "SELECT_PHOTO":
       return { ...state, selectedPhoto: action.payload };
+    case "SELECT_TOPIC":
+      return { ...state, selectedTopic: action.payload };
     case "CLOSE_MODAL":
       return { ...state, isModalOpen: false };
     case "OPEN_MODAL":
@@ -29,6 +34,9 @@ function reducer(state, action) {
       return { ...state, photoData: action.payload };
     case "SET_TOPIC_DATA":
       return { ...state, topicData: action.payload };
+    case "GET_PHOTOS_BY_TOPICS":
+      console.log(action.payload);
+      return { ...state, photoData: action.payload };
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -40,6 +48,7 @@ function useApplicationData() {
   const initialState = {
     isModalOpen: false,
     selectedPhoto: null,
+    selectedTopic: null,
     favourites: [],
     photoData: [],
     topicData: [],
@@ -69,19 +78,18 @@ function useApplicationData() {
     );
   }, []);
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedPhoto, setSelectedPhoto] = useState();
-  // const [favourites, addFavourites] = useState([]);
-
-  // const state = {
-  //   isModalOpen,
-  //   selectedPhoto,
-  //   favourites,
-  // };
-
-  // function storeFavourites(photo) {
-  //   addFavourites((prevFavourites) => [...prevFavourites, photo]);
-  // }
+  // Get photo data for specific topic
+  useEffect(() => {
+    if (state.selectedTopic) {
+      fetch(`/api/topics/photos/${state.selectedTopic}`).then((res) =>
+        res
+          .json()
+          .then((data) =>
+            dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data })
+          )
+      );
+    }
+  }, [state.selectedTopic]);
 
   function storeFavourites(photo, isFavourtie) {
     console.log(isFavourtie);
@@ -102,18 +110,16 @@ function useApplicationData() {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   }
 
-  // function selectPhoto(photo) {
-  //   setSelectedPhoto(photo);
-  // }
-
-  // function handleClickPhoto() {
-  //   setIsModalOpen((prevIsModalOpen) => (prevIsModalOpen ? false : true));
-  // }
+  function selectTopic(topicId) {
+    // console.log(topicId);
+    dispatch({ type: ACTIONS.SELECT_TOPIC, payload: topicId });
+  }
 
   return {
     state,
     handleModal,
     selectPhoto,
+    selectTopic,
     storeFavourites,
   };
 }

@@ -2,9 +2,14 @@ import React from "react";
 
 import "../styles/TopicListItem.scss";
 
-const TopicListItem = ({ title }) => {
+const TopicListItem = ({ id, title, selectTopic }) => {
   return (
-    <div className="topic-list__item">
+    <div
+      className="topic-list__item"
+      onClick={() => {
+        selectTopic(id);
+      }}
+    >
       <span>{title}</span>
     </div>
   );

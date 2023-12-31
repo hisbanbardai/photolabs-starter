@@ -9,23 +9,6 @@ const App = () => {
   const { state, handleModal, selectPhoto, selectTopic, storeFavourites } =
     useApplicationData();
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [selectedPhoto, setSelectedPhoto] = useState();
-  // const [favourites, addFavourites] = useState([]);
-
-  // function storeFavourites(photo) {
-  //   addFavourites((prevFavourites) => [...prevFavourites, photo]);
-  // }
-
-  // function selectPhoto(photo) {
-  //   setSelectedPhoto(photo);
-  // }
-
-  // function handleClickPhoto() {
-  //   setIsModalOpen((prevIsModalOpen) => (prevIsModalOpen ? false : true));
-  // }
-
-  // console.log(state.isModalOpen);
   return (
     <div className="App">
       <HomeRoute
@@ -33,14 +16,13 @@ const App = () => {
         openModal={handleModal}
         selectPhoto={selectPhoto}
         selectTopic={selectTopic}
-        // favourites={favourites}
         storeFavourites={storeFavourites}
       />
       {state.isModalOpen && (
         <PhotoDetailsModal
           state={state}
           closeModal={handleModal}
-          // selectedPhoto={selectedPhoto}
+          selectPhoto={selectPhoto}
           storeFavourites={storeFavourites}
         />
       )}

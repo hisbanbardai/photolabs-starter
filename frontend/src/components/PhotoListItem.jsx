@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
@@ -23,11 +23,6 @@ const PhotoListItem = ({
 
   return (
     <section className="photo-list__item">
-      {/* <PhotoFavButton
-        onClick={() =>
-          storeFavourites({ location, imageSource, username, profile })
-        }
-      /> */}
       <PhotoFavButton storeFavourites={storeFavourites} photoData={photoData} />
       <img
         src={imageSource.regular}

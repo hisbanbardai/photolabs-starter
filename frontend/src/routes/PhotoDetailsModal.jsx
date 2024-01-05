@@ -22,8 +22,6 @@ const PhotoDetailsModal = ({
         </button>
       </div>
 
-      {console.log(state.selectedPhoto)}
-
       <div className="photo-details-modal__header">
         <PhotoFavButton
           storeFavourites={storeFavourites}

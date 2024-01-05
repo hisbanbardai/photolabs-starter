@@ -4,7 +4,6 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = ({ photoData, storeFavourites, openModal, selectPhoto }) => {
-  console.log(photoData);
   const renderPhotos = photoData.map((photo) => {
     return (
       <li key={photo.id}>

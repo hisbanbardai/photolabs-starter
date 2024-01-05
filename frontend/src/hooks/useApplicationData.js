@@ -35,7 +35,6 @@ function reducer(state, action) {
     case "SET_TOPIC_DATA":
       return { ...state, topicData: action.payload };
     case "GET_PHOTOS_BY_TOPICS":
-      console.log(action.payload);
       return { ...state, photoData: action.payload };
     default:
       throw new Error(
@@ -92,7 +91,6 @@ function useApplicationData() {
   }, [state.selectedTopic]);
 
   function storeFavourites(photo, isFavourtie) {
-    console.log(isFavourtie);
     isFavourtie
       ? dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photo.id })
       : dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: photo });
@@ -111,7 +109,6 @@ function useApplicationData() {
   }
 
   function selectTopic(topicId) {
-    // console.log(topicId);
     dispatch({ type: ACTIONS.SELECT_TOPIC, payload: topicId });
   }
 

@@ -23,6 +23,7 @@ const HomeRoute = ({
         storeFavourites={storeFavourites}
         openModal={openModal}
         selectPhoto={selectPhoto}
+        favourites={state.favourites}
       />
     </div>
   );

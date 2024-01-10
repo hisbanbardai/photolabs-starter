@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import FavIcon from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
-function PhotoFavButton({ storeFavourites, photoData }) {
-  const [isSelected, setIsSelected] = useState(false);
+function PhotoFavButton({ storeFavourites, photoData, favourites }) {
+  const checkPhotoFav = (photoId, favPhotos) => {
+    return favPhotos.some((item) => item.id === photoId);
+  };
+
+  const [isSelected, setIsSelected] = useState(
+    checkPhotoFav(photoData.id, favourites)
+  );
+
+  useEffect(() => {
+    //This effect will run at first render and after that when photoData or favourites change
+    setIsSelected(checkPhotoFav(photoData.id, favourites));
+  }, [photoData, favourites]);
 
   function handleClick() {
     storeFavourites(photoData, isSelected);
-    setIsSelected((prevIsSelected) => (prevIsSelected ? false : true));
+    setIsSelected((prevIsSelected) => !prevIsSelected);
   }
 
   return (

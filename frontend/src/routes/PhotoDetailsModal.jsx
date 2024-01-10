@@ -26,6 +26,7 @@ const PhotoDetailsModal = ({
         <PhotoFavButton
           storeFavourites={storeFavourites}
           photoData={state.selectedPhoto}
+          favourites={state.favourites}
         />
         <img
           src={state.selectedPhoto.imageSource.full}
@@ -58,6 +59,7 @@ const PhotoDetailsModal = ({
           storeFavourites={storeFavourites}
           openModal={closeModal}
           selectPhoto={selectPhoto}
+          favourites={state.favourites}
         />
       </div>
     </div>

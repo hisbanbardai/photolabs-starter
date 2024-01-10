@@ -3,7 +3,13 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-const PhotoList = ({ photoData, storeFavourites, openModal, selectPhoto }) => {
+const PhotoList = ({
+  photoData,
+  storeFavourites,
+  openModal,
+  selectPhoto,
+  favourites,
+}) => {
   const renderPhotos = photoData.map((photo) => {
     return (
       <li key={photo.id}>
@@ -16,6 +22,7 @@ const PhotoList = ({ photoData, storeFavourites, openModal, selectPhoto }) => {
           storeFavourites={storeFavourites}
           openModal={openModal}
           selectPhoto={selectPhoto}
+          favourites={favourites}
         />
       </li>
     );

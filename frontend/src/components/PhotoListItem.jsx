@@ -12,6 +12,7 @@ const PhotoListItem = ({
   storeFavourites,
   openModal,
   selectPhoto,
+  favourites,
 }) => {
   const photoData = {
     id,
@@ -23,7 +24,11 @@ const PhotoListItem = ({
 
   return (
     <section className="photo-list__item">
-      <PhotoFavButton storeFavourites={storeFavourites} photoData={photoData} />
+      <PhotoFavButton
+        storeFavourites={storeFavourites}
+        photoData={photoData}
+        favourites={favourites}
+      />
       <img
         src={imageSource.regular}
         className="photo-list__image"
